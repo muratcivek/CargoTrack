@@ -4,9 +4,11 @@ using CargoTrack.Business.Services.Branches;
 using CargoTrack.DataAccess.Context;
 using CargoTrack.DataAccess.Repositories.Abouts;
 using CargoTrack.DataAccess.Repositories.Branches;
+using CargoTrack.Entity.Entities;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
+using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +29,8 @@ builder.Services.AddScoped<IBranchService, BranchService>();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<AppDbContext>();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -45,6 +49,11 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+);
 
 app.MapControllerRoute(
     name: "default",

@@ -15,29 +15,6 @@ namespace CargoTrack.DataAccess.Repositories.Abouts
         {
         }
 
-        public Task CreateAsync(About entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> DeleteAsync(About entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<About>> GetAllAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<About?> GetByIdAsync(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task UpdateAsync(About entity)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
