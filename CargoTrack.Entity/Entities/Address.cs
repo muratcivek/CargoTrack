@@ -16,6 +16,6 @@ namespace CargoTrack.Entity.Entities
         public Guid UserId { get; set; }
 
         // Navigation properties
-        public AppUser User { get; set; }
+        public virtual AppUser User { get; set; }
     }
 }

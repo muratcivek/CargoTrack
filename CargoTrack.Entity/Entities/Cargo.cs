@@ -16,10 +16,10 @@ namespace CargoTrack.Entity.Entities
         public Guid DestinationBranchId { get; set; }
 
         //navigation properties
-        public AppUser Sender { get; set; }
-        public AppUser Receiver { get; set; }
-        public Branch OriginBranch { get; set; }
-        public Branch DestinationBranch { get; set; }
+        public virtual AppUser Sender { get; set; }
+        public virtual AppUser Receiver { get; set; }
+        public virtual Branch OriginBranch { get; set; }
+        public virtual Branch DestinationBranch { get; set; }
 
 
     }

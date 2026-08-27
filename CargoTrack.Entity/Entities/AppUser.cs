@@ -13,9 +13,10 @@ namespace CargoTrack.Entity.Entities
         public string LastName { get; set; }
 
         // Navigation properties
-        public IList<Cargo> SentCargos { get; set; }
-        public IList<Cargo> ReceivedCargos { get; set; }
-        public IList<Address> Addresses { get; set; }
+        public virtual IList<Cargo> SentCargos { get; set; }
+        public virtual IList<Cargo> ReceivedCargos { get; set; }
+        public virtual List<Address> Addresses { get; set; }
 
     }
 }
+    
