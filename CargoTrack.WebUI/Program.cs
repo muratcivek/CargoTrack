@@ -106,6 +106,21 @@ using (var scope = app.Services.CreateScope())
 
         context.Cities.AddRange(cities);
         context.SaveChanges();
+
+        
+    }
+
+    if (!context.Roles.Any())
+    {
+        var roles = new List<AppRole>
+            {
+                new AppRole { Name = "Admin"},
+                new AppRole { Name = "User"},
+                new AppRole { Name = "User"}
+
+            };
+        context.Roles.AddRange(roles);
+        context.SaveChanges();
     }
 }
 
