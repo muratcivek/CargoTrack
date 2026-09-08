@@ -75,7 +75,7 @@ app.MapControllerRoute(
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Default}/{action=Index}/{id?}");
 
 // Uygulama başlarken Seed Data ekleme işlemi
 using (var scope = app.Services.CreateScope())
@@ -128,6 +128,26 @@ using (var scope = app.Services.CreateScope())
 
             };
         context.Roles.AddRange(roles);
+        context.SaveChanges();
+    }
+
+    if (!context.Cargo.Any())
+    {
+        var cargo = new Cargo
+        {
+            Id = Guid.NewGuid(),
+            SenderId = Guid.Parse("5a4f1a06-bd05-45d3-a9ab-08df0855f6db"),
+            ReceiverId = Guid.Parse("15f26dc4-c27f-4832-7ad4-08df09eb55ba"),
+            OriginBranchId = Guid.Parse("29a7aa53-0410-46ea-834d-ae5280cd5395"),
+            DestinationBranchId = Guid.Parse("29a7aa53-0410-46ea-834d-ae5280cd5395"),
+            TrackCode = "CT202609081234",
+            ShipmentDate = DateTime.Now,
+            EstinatedArrivalDate = DateTime.Now.AddDays(2),
+            cargoType = CargoTrack.Entity.Entities.Enums.CargoType.Standart,
+            CargoStatus = CargoTrack.Entity.Entities.Enums.CargoStatus.DispatchedFromTransferCenter
+        };
+
+        context.Add(cargo);
         context.SaveChanges();
     }
 }
